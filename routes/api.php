@@ -17,5 +17,5 @@ use Illuminate\Http\Request;
     return $request->user();
 });*/
 
-Route::get('users', 'API\UserController@index');
+Route::apiResource('users', 'API\UserController');
 Route::apiResource('roles', 'API\RoleController')->except(['show']);

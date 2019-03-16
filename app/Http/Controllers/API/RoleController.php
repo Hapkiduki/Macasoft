@@ -31,13 +31,13 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
+        $request->validate([
             'name' => 'required|unique:roles|max:40'
         ]);
 
-        if ($validator->fails()) {
+        /*if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()], 422);
-        }
+        }*/
 
         $role = new Role;
         $role->name = $request->input('name');
@@ -74,6 +74,6 @@ class RoleController extends Controller
     {
         $role = Role::find($id);
         $role->delete();
-        return response()->json(['message' => 'Rol Eliminado!'], 200);
+        return response()->json(['message' => 'Rol ' . $role->name . ' Eliminado!'], 200);
     }
 }

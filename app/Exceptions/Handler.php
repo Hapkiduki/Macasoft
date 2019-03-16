@@ -4,6 +4,8 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\JsonResponse;
+
 
 class Handler extends ExceptionHandler
 {
@@ -46,6 +48,15 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+
+        if ($request->isJson()) {   //add Accept: application/json in request
+            $exception = $this->prepareException($exception);
+            if ($exception instanceof Illuminate\Validation\ValidationException) {
+
+                return parent::invalidJson($request, $exception);
+            }
+            return parent::prepareJsonResponse($request, $exception);
+        }
         return parent::render($request, $exception);
     }
 }
