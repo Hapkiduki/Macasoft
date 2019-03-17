@@ -6,7 +6,7 @@
           <div class="card-header">Usuarios</div>
 
           <div class="card-body">
-            <ul v-for="item in list">
+            <ul v-for="item in list" v-bind:key="item.id">
               <li>
                 <router-link :to="{name: 'user', params: {id: item.id}}" v-text="item.email"></router-link>
               </li>

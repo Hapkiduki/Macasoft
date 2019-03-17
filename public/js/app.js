@@ -1818,6 +1818,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["id"],
   data: function data() {
@@ -37020,7 +37028,7 @@ var render = function() {
             "div",
             { staticClass: "card-body" },
             _vm._l(_vm.list, function(item) {
-              return _c("ul", [
+              return _c("ul", { key: item.id }, [
                 _c(
                   "li",
                   [
@@ -37139,7 +37147,17 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("h2", { domProps: { textContent: _vm._s(_vm.user.fullname) } })
+  return _c("div", [
+    _c("h2", { domProps: { textContent: _vm._s(_vm.user.fullname) } }),
+    _vm._v(" "),
+    _c("span", [_vm._v("Email: " + _vm._s(_vm.user.email))]),
+    _vm._v(" "),
+    _c("img", {
+      staticClass:
+        "img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}",
+      attrs: { src: _vm.user.photo, alt: "" }
+    })
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

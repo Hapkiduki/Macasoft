@@ -1,7 +1,15 @@
-<template>
-  <h2 v-text="user.fullname"></h2>
-
+  <template>
+  <div>
+    <h2 v-text="user.fullname"></h2>
+    <span>Email: {{ user.email }}</span>
+    <img
+      :src="user.photo"
+      class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
+      alt
+    >
+  </div>
 </template>
+
 
 <script>
 export default {
